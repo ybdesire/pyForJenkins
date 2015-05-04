@@ -2,7 +2,7 @@
 The py scripts for Jenkins CI processing.
 
 Environment: Windows + Python 2.7(3.x cannot support Jenkins module ~April-2015)
-================================================================================
+-----------
 
 Steps to use py to control Jenkins
 ----------------------------------
