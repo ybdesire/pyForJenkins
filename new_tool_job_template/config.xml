@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>50</daysToKeep>
+    <numToKeep>50</numToKeep>
+    <artifactDaysToKeep>50</artifactDaysToKeep>
+    <artifactNumToKeep>50</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>SlaveGroup2</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <authToken>StringCollector-Receiver_X1-RfWin-Selfservice-Jupiter_base</authToken>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>Toolset-Receiver_X1-RfWin-Selfservice-Jupiter_base</upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>C:\CI\workspace\Src-Receiver_X1-RfWin-Selfservice-Jupiter_base</customWorkspace>
+  <builders>
+    <hudson.tasks.BatchFile>
+      <command>py tools\CIScripts\StringCollector.py</command>
+    </hudson.tasks.BatchFile>
+  </builders>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>StringCollector*.csv</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
+  <buildWrappers>
+    <com.datalex.jenkins.plugins.nodestalker.wrapper.NodeStalkerBuildWrapper plugin="job-node-stalker@1.0.3">
+      <job>Src-Receiver_X1-RfWin-Selfservice-Jupiter_base</job>
+      <shareWorkspace>true</shareWorkspace>
+      <firstTimeFlag>false</firstTimeFlag>
+    </com.datalex.jenkins.plugins.nodestalker.wrapper.NodeStalkerBuildWrapper>
+  </buildWrappers>
+</project>
