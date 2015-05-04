@@ -18,4 +18,11 @@ test.py
 -------
 The "Hello world" demo for jenkins module usage.
 
+p4_job_cfg.py
+-------------
+The example to modify job configuration p4 scm parameters(p4User/p4Passwd/p4Port/projectPath) by cmd line.
+run it at cmd: p4_job_cfg.py http://test-ci.eng.citrite.net:8080 bin 123 jobname biny p4password 401.citrite.net:1111 1
+
+
+
 
