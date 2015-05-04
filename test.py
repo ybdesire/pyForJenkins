@@ -5,13 +5,13 @@ import xml.etree.ElementTree as ET
 
 def main():
     try:
-        j = jenkins.Jenkins('http://beacon-test-ci.eng.citrite.net:8080', 'biny', 'citrix')
+        j = jenkins.Jenkins('http://xxx-test-ci.eng.citrite.net:8080', 'username_ci', 'password_ci')
         jobs = j.get_jobs()
         cfg_xml_origin = j.get_job_config("Config-RfAndroid-RfAndroid-Main")
         root = ET.fromstring(cfg_xml_origin)
         tree = ET.ElementTree(root)
         
-        #get parameter
+        #get parameters for scm p4 settings at job configuration file
         for scm in root.findall('scm'):
             p4User = scm.find('p4User').text
             p4Passwd = scm.find('p4Passwd').text
@@ -27,9 +27,6 @@ def main():
         #re-config job
         j.reconfig_job('Config-RfAndroid-RfAndroid-Main', cfg_xml_dst)
          
-#        for job in jobs:
-#            if job['name'] == "Config-RfAndroid-RfAndroid-Main":
-#                print(job)
     except Exception as e:
         print(e);     
     
