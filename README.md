@@ -14,3 +14,8 @@ Steps to use py to control Jenkins
 4. 	Now the py module can be import by "import jenkins".
 5. 	Refer to each py file for examples to manipulate Jenkins CI by py.
 
+test.py
+-------
+The "Hello world" demo for jenkins module usage.
+
+
