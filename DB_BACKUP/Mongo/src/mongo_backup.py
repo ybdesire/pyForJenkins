@@ -90,10 +90,11 @@ def main(argv):
         if(timeNow in backupTimes):
             LOG.info('{0} backup begin'.format(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
             backupCMD = ''
+            outputDir = ''.join([args.out, '_', datetime.now().strftime('%Y-%m-%d_%H-%M')])
             if(args.userName):
-                backupCMD = MONGO_BACKUP_CMD_WITH_USER.format(hostAddr=args.host, serverPort=args.port, mongoUser=args.userName, mongoPassword=args.password, output=args.out)
+                backupCMD = MONGO_BACKUP_CMD_WITH_USER.format(hostAddr=args.host, serverPort=args.port, mongoUser=args.userName, mongoPassword=args.password, output=outputDir)
             else:
-                backupCMD = MONGO_BACKUP_CMD_WITHOUT_USER.format(hostAddr=args.host, serverPort=args.port, output=args.out)
+                backupCMD = MONGO_BACKUP_CMD_WITHOUT_USER.format(hostAddr=args.host, serverPort=args.port, output=outputDir)
 
             if not backupDBs:#if backupDBs is empty(no specify db input)                
                 backupCMD.format(dbName='')
