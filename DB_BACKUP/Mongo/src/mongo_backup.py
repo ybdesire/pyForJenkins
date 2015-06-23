@@ -14,7 +14,7 @@ __version__ = '1.0'
 
 LOG = None
 
-MONGO_BACKUP_CMD_WITHOUT_USER = 'mongodump --host {hostAddr} --port {serverPort} --out {output} '
+MONGO_BACKUP_CMD_WITHOUT_USER = 'mongodump --host {hostAddr} --port {serverPort} --out {output}'
 MONGO_BACKUP_CMD_WITH_USER = 'mongodump --host {hostAddr} --port {serverPort} --user {mongoUser} --password {mongoPassword} --out {output}'
 
 def log_initialize(arguments):
@@ -42,7 +42,8 @@ def quit_application(status):
 
 def process_cmd(cmd, mode):
     if (mode=='test'):
-        LOG.info(cmd)
+        LOG.info(''.join(['TEST_CMD ', cmd]))
+        quit_application(0)
     else:
         pass
 
@@ -88,7 +89,7 @@ def main(argv):
         timeNow = datetime.now().strftime('%H:%M')#24 hours format
         LOG.info('{0} backup time checking'.format(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))           
         if(timeNow in backupTimes):
-            LOG.info('{0} backup begin'.format(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+            LOG.info('{0} start backup...'.format(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
             backupCMD = ''
             outputDir = ''.join([args.out, '_', datetime.now().strftime('%Y-%m-%d_%H-%M')])
             if(args.userName):
