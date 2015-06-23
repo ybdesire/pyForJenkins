@@ -7,6 +7,7 @@ import sys
 import logging
 import argparse
 import time
+import subprocess
 from datetime import datetime
 
 __application__ = 'MongoDB logic backup tool'
@@ -45,7 +46,7 @@ def process_cmd(cmd, mode):
         LOG.info(''.join(['TEST_CMD ', cmd]))
         quit_application(0)
     else:
-        pass
+        subprocess.Popen(cmd, shell=True)
 
 def main(argv): 
     cmd_parser = argparse.ArgumentParser();
@@ -98,7 +99,6 @@ def main(argv):
                 backupCMD = MONGO_BACKUP_CMD_WITHOUT_USER.format(hostAddr=args.host, serverPort=args.port, output=outputDir)
 
             if not backupDBs:#if backupDBs is empty(no specify db input)                
-                backupCMD.format(dbName='')
                 process_cmd(backupCMD, args.mode)
             else:
                 for database in backupDBs:
