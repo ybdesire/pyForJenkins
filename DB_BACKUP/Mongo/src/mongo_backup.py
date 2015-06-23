@@ -14,8 +14,8 @@ __version__ = '1.0'
 
 LOG = None
 
-MONGO_BACKUP_CMD_WITHOUT_USER = 'mongodump --host {hostAddr} --port {serverPort} --db {dbName} --out {output}'
-MONGO_BACKUP_CMD_WITH_USER = 'mongodump --host {hostAddr} --port {serverPort} --user {mongoUser} --password {mongoPassword} --db {dbName} --out {output}'
+MONGO_BACKUP_CMD_WITHOUT_USER = 'mongodump --host {hostAddr} --port {serverPort} --out {output} '
+MONGO_BACKUP_CMD_WITH_USER = 'mongodump --host {hostAddr} --port {serverPort} --user {mongoUser} --password {mongoPassword} --out {output}'
 
 def log_initialize(arguments):
     global LOG
@@ -40,8 +40,11 @@ def quit_application(status):
         LOG.info("{application} exited normally".format(application=__application__))
     sys.exit(status)
 
-def process_cmd(cmd):
-    pass
+def process_cmd(cmd, mode):
+    if (mode=='test'):
+        print(cmd)
+    else:
+        pass
 
 def main(argv): 
     cmd_parser = argparse.ArgumentParser();
@@ -92,14 +95,14 @@ def main(argv):
             else:
                 backupCMD = MONGO_BACKUP_CMD_WITHOUT_USER.format(hostAddr=args.host, serverPort=args.port, output=args.out)
 
-            if not backupDBs:
-                for database in backupDBs:
-                    backupCMD.format(dbName=database)
-                    process_cmd(backupCMD)
-            else:
+            if not backupDBs:#if backupDBs is empty(no specify db input)                
                 backupCMD.format(dbName='')
-                process_cmd(backupCMD)
-            
+                process_cmd(backupCMD, args.mode)
+            else:
+                for database in backupDBs:
+                    backupCMD = backupCMD + ' --db ' + database
+                    process_cmd(backupCMD, args.mode)
+
             time.sleep(60)#in case the backup process less than 1 min
         else:
             time.sleep(60)
