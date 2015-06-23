@@ -42,7 +42,7 @@ def quit_application(status):
 
 def process_cmd(cmd, mode):
     if (mode=='test'):
-        print(cmd)
+        LOG.info(cmd)
     else:
         pass
 
@@ -100,12 +100,12 @@ def main(argv):
                 process_cmd(backupCMD, args.mode)
             else:
                 for database in backupDBs:
-                    backupCMD = backupCMD + ' --db ' + database
+                    backupCMD = ''.join([backupCMD, ' --db ', database])
                     process_cmd(backupCMD, args.mode)
 
             time.sleep(60)#in case the backup process less than 1 min
         else:
-            time.sleep(60)
+            time.sleep(60)#start another round of checking after 1 min
     
 if __name__ == '__main__':
     main(sys.argv)
