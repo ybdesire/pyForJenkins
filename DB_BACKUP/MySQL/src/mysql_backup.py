@@ -9,13 +9,14 @@ import sys
 import argparse
 import time
 import subprocess
+import os
 from datetime import datetime
 
 __application__ = 'mysql logic backup tool'
 __version__ = '1.0'
 
 LOG = None
-MYSQL_BACKUP_CMD = 'mysqldump -P{port} -u{user} -p{password} {database} > {output}'
+MYSQL_BACKUP_CMD = 'mysqldump -P{port} -h{host} -u{user} -p{password} {database} > {output}'
 
 def log_initialize(arguments):
     global LOG
@@ -91,6 +92,9 @@ def main(argv):
         if(time_now in backup_time_slots):
             LOG.info('{0} start backup...'.format(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
             output_dir = ''.join([args.out, '_', datetime.now().strftime('%Y-%m-%d_%H-%M')])
+            
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
 
             for db in backup_dbs:
                 out = ''.join([output_dir, '\\', db, '.sql'])
