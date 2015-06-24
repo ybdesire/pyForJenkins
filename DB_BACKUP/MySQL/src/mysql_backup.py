@@ -45,7 +45,7 @@ def process_cmd(cmd, mode):
         LOG.info(''.join(['TEST_CMD ', cmd]))
         quit_application(0)
     else:
-        pass#subprocess.Popen(cmd, shell=True)
+        subprocess.Popen(cmd, shell=True)
 
 def main(argv):
     cmd_parser = argparse.ArgumentParser();
