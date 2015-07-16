@@ -33,3 +33,8 @@ Mongo DB daily backup script for python 3.4.3.
 > - setup.py. setup script for py2exe, cmd as 'py setup.py py2exe'
 > - src/mongo_backup.py. mongo db backup script. cmd as 'python mongo_backup.py  1.1.1.1 8080 d:\mongo-db-backup -t 9:00'
 > - src/test_mongo_backup.py. test script for mongo_backup.py.
+
+draft script
+------------
+Some of the script cannot be ran directly since there are just draft or uncompleted draft.
+Those script just for reference.
