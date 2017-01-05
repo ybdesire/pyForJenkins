@@ -38,3 +38,33 @@ draft script
 ------------
 Some of the script cannot be ran directly since there are just draft or uncompleted draft.
 Those script just for reference.
+
+
+Useful Python Functions
+-----------------------
+
+# 1 DB related
+
+## 1.1 DB read
+
+* [Select data from DB](https://github.com/ybdesire/pyForJenkins/blob/master/useful_py_functions/py_read_db.py)
+
+## 1.2 DB write
+
+* [Insert data into DB](https://github.com/ybdesire/pyForJenkins/blob/master/useful_py_functions/py_write_db.py)
+
+# 2 EXCEL related
+
+
+## 2.1 EXCEL read
+
+* [Reading Excel](https://github.com/ybdesire/pyForJenkins/blob/master/create_xml_config_file_by_reading_excel/create_config.py)
+
+## 2.2 EXCEL write
+
+* [Writting data into EXCEL](https://github.com/ybdesire/pyForJenkins/blob/master/useful_py_functions/py_write_excel.py)
+
+
+
+
+
