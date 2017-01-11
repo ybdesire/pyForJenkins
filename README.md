@@ -58,6 +58,7 @@ Useful Python Functions
 
 ## 2.1 EXCEL read
 
+* [Read an existing workbook](https://github.com/ybdesire/pyForJenkins/blob/master/useful_py_functions/py_read_excel.py)
 * [Reading Excel](https://github.com/ybdesire/pyForJenkins/blob/master/create_xml_config_file_by_reading_excel/create_config.py)
 
 ## 2.2 EXCEL write
